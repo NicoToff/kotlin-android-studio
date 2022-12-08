@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Dice Roller</string>
+    <string name="main_title">Roll the die!</string>
+    <string name="button_roll">Roll</string>
+    <string name="rollResult">The result of the roll</string>
+    <string name="numberInputPlaceholder">2–100</string>
+    <string name="_6">6</string>
+    <string name="__facesChoice">Faces:</string>
 </resources>
