@@ -14,4 +14,18 @@ abstract class Dwelling(private var residents: Int) {
     override fun toString(): String {
         return "$residents / ${capacity}${if(!hasRoom()) " (FULL)" else ""}"
     }
+
+    operator fun component1(): Int {
+        return (residents)
+    }
+
+    operator fun component2(): Int {
+        return (capacity)
+    }
+
+    operator fun component3(): String {
+        return (buildingMaterial)
+    }
+
+
 }
