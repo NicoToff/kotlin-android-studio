@@ -1,4 +1,4 @@
-abstract class Dwelling(private var residents: Array<Resident>) {
+abstract class Dwelling(val residents: ArrayList<Resident>) {
     abstract val buildingMaterial: BuildingMaterial
     abstract val capacity: Int
 
@@ -7,7 +7,7 @@ abstract class Dwelling(private var residents: Array<Resident>) {
     }
 
     fun addResident(resident: Resident) {
-        if (hasRoom()) residents += resident
+        if (hasRoom()) residents.add(resident)
     }
 
     abstract fun floorArea(): Double
@@ -17,7 +17,7 @@ abstract class Dwelling(private var residents: Array<Resident>) {
         return "${residents.size} / ${capacity}${if (!hasRoom()) " (FULL)" else ""}"
     }
 
-    operator fun component1(): Array<Resident> {
+    operator fun component1(): ArrayList<Resident> {
         return (residents)
     }
 

@@ -1,4 +1,4 @@
-class Hut(residents: Array<Resident> = emptyArray(), val width: Double = 3.0) : Dwelling(residents) {
+class Hut(residents: ArrayList<Resident> = arrayListOf(), val width: Double = 3.0) : Dwelling(residents) {
     override val buildingMaterial = BuildingMaterial.WOOD
     override val capacity = 3
     override fun floorArea(): Double {

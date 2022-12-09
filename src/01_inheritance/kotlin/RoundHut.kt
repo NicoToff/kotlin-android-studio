@@ -1,7 +1,7 @@
 import java.lang.Math.PI
 
 class RoundHut(
-    residents: Array<Resident> = emptyArray(),
+    residents: ArrayList<Resident> = arrayListOf(),
     private val radius: Double = 2.0,
     override val buildingMaterial: BuildingMaterial = BuildingMaterial.STRAW,
     override val capacity: Int = 4

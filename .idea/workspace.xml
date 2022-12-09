@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="682e0202-9f79-4cc1-bdbe-6075d9c7fdaf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/01_inheritance/kotlin/BuildingMaterial.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/01_inheritance/kotlin/Resident.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/01_inheritance/kotlin/RoundHut.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/02_/kotlin/test.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kotlin-testing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/kotlin-testing.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/01_inheritance/kotlin/Dwelling.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/01_inheritance/kotlin/Dwelling.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/01_inheritance/kotlin/Hut.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/01_inheritance/kotlin/Hut.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/01_inheritance/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/01_inheritance/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/01_inheritance/kotlin/RoundHut.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/01_inheritance/kotlin/RoundHut.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
