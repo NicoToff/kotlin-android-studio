@@ -13,22 +13,31 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         val rollButton = findViewById<Button>(R.id.rollButton)
-        val diceImage = findViewById<ImageView>(R.id.diceImage)
 
         rollButton.setOnClickListener {
-
-            val result = Dice(6).roll()
-            Toast.makeText(this, "$result !", Toast.LENGTH_SHORT).show()
-            when (result) {
-                1 -> diceImage.setImageResource(R.drawable.dice_1)
-                2 -> diceImage.setImageResource(R.drawable.dice_2)
-                3 -> diceImage.setImageResource(R.drawable.dice_3)
-                4 -> diceImage.setImageResource(R.drawable.dice_4)
-                5 -> diceImage.setImageResource(R.drawable.dice_5)
-                6 -> diceImage.setImageResource(R.drawable.dice_6)
-            }
+            val result = rollDice()
+            val toastText = "${result}${"!".repeat(result)}"
+            Toast.makeText(this, toastText, Toast.LENGTH_SHORT).show()
         }
+        rollDice()
+    }
+    private fun rollDice() : Int {
+        val result = Dice(6).roll()
+
+        val diceImage = findViewById<ImageView>(R.id.diceImage)
+        val correctDrawable = when (result) {
+            1 -> (R.drawable.dice_1)
+            2 -> (R.drawable.dice_2)
+            3 -> (R.drawable.dice_3)
+            4 -> (R.drawable.dice_4)
+            5 -> (R.drawable.dice_5)
+            else -> (R.drawable.dice_6)
+        }
+        diceImage.setImageResource(correctDrawable)
+        diceImage.contentDescription = result.toString()
+        return result
     }
 }
 
