@@ -1,21 +1,23 @@
-abstract class Dwelling(private var residents: Int) {
-    abstract val buildingMaterial: String
+abstract class Dwelling(private var residents: Array<Resident>) {
+    abstract val buildingMaterial: BuildingMaterial
     abstract val capacity: Int
 
     fun hasRoom(): Boolean {
-        return capacity > residents
+        return capacity > residents.size
     }
 
-    fun addResident(nbr : Int = 1) {
-        if(hasRoom()) residents += nbr
-        if(residents > capacity) residents = capacity
+    fun addResident(resident: Resident) {
+        if (hasRoom()) residents += resident
     }
+
+    abstract fun floorArea(): Double
+
 
     override fun toString(): String {
-        return "$residents / ${capacity}${if(!hasRoom()) " (FULL)" else ""}"
+        return "${residents.size} / ${capacity}${if (!hasRoom()) " (FULL)" else ""}"
     }
 
-    operator fun component1(): Int {
+    operator fun component1(): Array<Resident> {
         return (residents)
     }
 
@@ -23,7 +25,7 @@ abstract class Dwelling(private var residents: Int) {
         return (capacity)
     }
 
-    operator fun component3(): String {
+    operator fun component3(): BuildingMaterial {
         return (buildingMaterial)
     }
 

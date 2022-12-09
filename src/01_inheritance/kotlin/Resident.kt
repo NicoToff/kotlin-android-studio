@@ -1,0 +1,1 @@
+data class Resident(val name: String, var age: Int)
