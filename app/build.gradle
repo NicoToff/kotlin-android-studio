@@ -7,6 +7,10 @@ android {
     namespace 'com.example.mqtt_test'
     compileSdk 33
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId "com.example.mqtt_test"
         minSdk 23

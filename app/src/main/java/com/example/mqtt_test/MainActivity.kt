@@ -6,25 +6,23 @@ import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.widget.Switch
 import android.widget.TextView
+import com.example.mqtt_test.databinding.ActivityMainBinding
 import info.mqtt.android.service.MqttAndroidClient
 import org.eclipse.paho.client.mqttv3.*
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var bind: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        bind = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(bind.root)
 
         val topics: ArrayList<String> = arrayListOf()
 
-        val swiConnectedIndicator = findViewById<Switch>(R.id.swiConnectedIndicator)
-        toggleSwitch(swiConnectedIndicator, false)
-
-        val lblTopicCounter = findViewById<TextView>(R.id.lblTopicCounter)
-        lblTopicCounter.text = "0"
-
-        val txtTopicDisplay = findViewById<TextView>(R.id.txtTopicDisplay)
-        txtTopicDisplay.movementMethod = ScrollingMovementMethod() // Enables the scrollbar
+        bind.txtTopicDisplay.movementMethod = ScrollingMovementMethod() // Enables the scrollbar
 
         val client = MqttAndroidClient(
             this,
@@ -54,16 +52,16 @@ class MainActivity : AppCompatActivity() {
         client.setCallback(object : MqttCallbackExtended {
             override fun connectionLost(cause: Throwable?) {
                 Log.w("mqtt2", "Connexion perdue")
-                toggleSwitch(swiConnectedIndicator, false)
+                toggleSwitch(bind.swiConnectedIndicator, false)
                 mqttConnect()
             }
 
             override fun messageArrived(topic: String?, message: MqttMessage?) {
                 if (topic != null && !topics.contains(topic)) {
                     topics.add(topic)
-                    lblTopicCounter.text = topics.size.toString()
-                    txtTopicDisplay.text = topics.joinToString("\n")
-                    autoScroll(txtTopicDisplay)
+                    bind.lblTopicCounter.text = topics.size.toString()
+                    bind.txtTopicDisplay.text = topics.joinToString("\n")
+                    autoScroll(bind.txtTopicDisplay)
                 }
                 Log.i("mqtt2", "New message: ($topic) $message")
             }
@@ -74,7 +72,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun connectComplete(reconnect: Boolean, serverURI: String?) {
                 Log.i("mqtt2", if (reconnect) "Reconnected ~~" else "Connection complete !")
-                toggleSwitch(swiConnectedIndicator, true)
+                toggleSwitch(bind.swiConnectedIndicator, true)
                 client.subscribe("/#", 0)
             }
         })
