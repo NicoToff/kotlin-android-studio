@@ -36,20 +36,18 @@
         android:id="@+id/lblTopicCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="623dp"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainTitle"
         tools:text="42" />
 
     <Switch
         android:id="@+id/swiConnectedIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="280dp"
+        android:layout_marginStart="260dp"
         android:layout_marginEnd="16dp"
         android:clickable="false"
         android:text="@string/connectedText"
@@ -65,27 +63,18 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="300dp"
+        android:layout_marginBottom="525dp"
         android:fadeScrollbars="true"
         android:isScrollContainer="true"
+        android:overScrollMode="ifContentScrolls"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="vertical"
         android:scrollHorizontally="true"
+        android:verticalScrollbarPosition="right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:text="/mqtt/test/nothing" />
 
-    <ScrollView
-        android:layout_width="28dp"
-        android:layout_height="6dp"
-        app:layout_constraintBottom_toBottomOf="@+id/txtTopicDisplay"
-        app:layout_constraintEnd_toEndOf="@+id/txtTopicDisplay"
-        app:layout_constraintStart_toStartOf="@+id/txtTopicDisplay"
-        app:layout_constraintTop_toTopOf="@+id/txtTopicDisplay">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
