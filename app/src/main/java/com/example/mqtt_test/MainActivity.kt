@@ -14,15 +14,32 @@ class MainActivity : AppCompatActivity() {
 
         val client = MqttAndroidClient(
             this,
-            "tcp://test.mosquitto.org:1883",
+            "tcp://178.32.223.217:80",
             UUID.randomUUID().toString()
-        )// .apply { setForegroundService(foregroundNotidication, 3) }
+        )
 
         val opt = MqttConnectOptions()
+        with(opt) {
+            userName = "groupe2"
+            password = "groupe2".toCharArray()
+        }
+
+        fun mqttConnect() {
+            client.connect(opt, this, object: IMqttActionListener {
+                override fun onSuccess(asyncActionToken: IMqttToken?) {
+                    Log.i("mqtt2", "Connection success")
+                }
+
+                override fun onFailure(asyncActionToken: IMqttToken?, exception: Throwable?) {
+                    Log.w("mqtt2", "Erreur de connexion", exception)
+                }
+            })
+        }
 
         client.setCallback(object: MqttCallbackExtended {
             override fun connectionLost(cause: Throwable?) {
                 Log.w("mqtt2", "Connexion perdue")
+                mqttConnect()
             }
 
             override fun messageArrived(topic: String?, message: MqttMessage?) {
@@ -34,19 +51,11 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun connectComplete(reconnect: Boolean, serverURI: String?) {
-                Log.i("mqtt2", "Connecté. reconnect : $reconnect")
-                client.subscribe("/helha/nicotoff/rfid",0)
+                Log.i("mqtt2", if(reconnect) "Reconnected ~~" else "Connection complete !")
+                client.subscribe("/groupe2/test",0)
             }
         })
 
-        client.connect(opt, this, object: IMqttActionListener {
-            override fun onSuccess(asyncActionToken: IMqttToken?) {
-                Log.i("mqtt2", "Connecté")
-            }
-
-            override fun onFailure(asyncActionToken: IMqttToken?, exception: Throwable?) {
-                Log.w("mqtt2", "Erreur de connexion", exception)
-            }
-        })
+        mqttConnect()
     }
 }
