@@ -66,9 +66,26 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="300dp"
+        android:fadeScrollbars="true"
+        android:isScrollContainer="true"
+        android:scrollHorizontally="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:text="/mqtt/test/nothing" />
+
+    <ScrollView
+        android:layout_width="28dp"
+        android:layout_height="6dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtTopicDisplay"
+        app:layout_constraintEnd_toEndOf="@+id/txtTopicDisplay"
+        app:layout_constraintStart_toStartOf="@+id/txtTopicDisplay"
+        app:layout_constraintTop_toTopOf="@+id/txtTopicDisplay">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
