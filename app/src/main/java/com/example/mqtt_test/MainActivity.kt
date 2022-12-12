@@ -14,14 +14,14 @@ class MainActivity : AppCompatActivity() {
 
         val client = MqttAndroidClient(
             this,
-            "tcp://178.32.223.217:80",
+            "tcp://kermareg.be:1883",
             UUID.randomUUID().toString()
         )
 
         val opt = MqttConnectOptions()
         with(opt) {
-            userName = "groupe2"
-            password = "groupe2".toCharArray()
+            userName = "helha"
+            password = "helha".toCharArray()
         }
 
         fun mqttConnect() {
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun connectComplete(reconnect: Boolean, serverURI: String?) {
                 Log.i("mqtt2", if(reconnect) "Reconnected ~~" else "Connection complete !")
-                client.subscribe("/groupe2/test",0)
+                client.subscribe("/#",0)
             }
         })
 
